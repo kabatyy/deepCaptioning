@@ -19,7 +19,6 @@ def download_images():
     subprocess.run(["wget", "-O", val_zip_path, val_images_url], check=True)
     subprocess.run(["wget", "-O", test_zip_path, test_images_url], check=True)
     subprocess.run(["wget", "-O", annotations_trainval_zip_path,    train_val_annotations_url], check=True)
-    print("Downloaded images and annotations")
     return train_zip_path, val_zip_path, test_zip_path, annotations_trainval_zip_path
   
 
@@ -32,13 +31,12 @@ def extract_images(train_zip_path, val_zip_path, test_zip_path, annotations_trai
     os.makedirs(val_extract_dir, exist_ok=True)
     annotations_extract_dir = os.path.join(COCO_API_DIR, "annotations/annotations")
     os.makedirs(annotations_extract_dir, exist_ok=True)
-
-    subprocess.run(["unzip", "-o",], train_zip_path, "-d", train_extract_dir, check=True)
-    subprocess.run(["unzip", "-o",], val_zip_path, "-d", test_extract_dir, check=True)
-    subprocess.run(["unzip", "-o",], test_zip_path, "-d", val_extract_dir, check=True)
-    subprocess.run(["unzip", "-o",], annotations_trainval_zip_path, "-d", annotations_extract_dir, check=True)
-    print(f"Images extracted.")
-
+        
+    subprocess.run(["unzip", "-o", train_zip_path, "-d", train_extract_dir], check=True)
+    subprocess.run(["unzip", "-o", val_zip_path, "-d", val_extract_dir], check=True)
+    subprocess.run(["unzip", "-o", test_zip_path, "-d", test_extract_dir], check=True)
+    subprocess.run(["unzip", "-o", annotations_trainval_zip_path, "-d", annotations_extract_dir], check=True)
+    print("Images extracted successfully")
 
 if __name__ == "__main__":
  
