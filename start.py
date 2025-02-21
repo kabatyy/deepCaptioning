@@ -23,12 +23,10 @@ def download_images():
   
 
 def extract_images(train_zip_path, val_zip_path, test_zip_path, annotations_trainval_zip_path):
-    train_extract_dir = os.path.join(COCO_API_DIR, "images/train2014")
+    train_extract_dir = os.path.join(COCO_API_DIR, "images")
     os.makedirs(train_extract_dir, exist_ok=True)
-    test_extract_dir =  os.path.join(COCO_API_DIR, "images/test2014")
-    os.makedirs(test_extract_dir, exist_ok=True)
-    val_extract_dir = os.path.join(COCO_API_DIR, "images/val2014")
-    os.makedirs(val_extract_dir, exist_ok=True)
+    test_extract_dir =  os.path.join(COCO_API_DIR, "images")
+    val_extract_dir = os.path.join(COCO_API_DIR, "images")
     annotations_extract_dir = COCO_API_DIR
 
     subprocess.run(["unzip", "-o", train_zip_path, "-d", train_extract_dir], check=True)
