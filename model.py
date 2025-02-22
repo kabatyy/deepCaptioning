@@ -7,10 +7,10 @@ class EncoderCNN(nn.Module):
     def __init__(self, embed_size):
         """Load the pretrained ResNet-50 and replace top fc layer."""
         super().__init__()
-        resnet = models.resnet50(weights='DEFAULT')
+        resnet = models.resnet50(weights='ResNet50_Weights.DEFAULT')
         modules = list(resnet.children())[:-1]
         self.resnet = nn.Sequential(*modules)
-        self.embed = nn.Linear(resnet.fc.in_features)
+        self.embed = nn.Linear(resnet.fc.in_features, embed_size)
         self.bn = nn.BatchNorm1d(embed_size, momentum=0.01)
     def forward(self, images):
         """Extract feature vectors from input images."""
